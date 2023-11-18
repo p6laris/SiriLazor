@@ -1,36 +1,38 @@
-name: Deploy Blazor WASM to GitHub Pages
+name: 'Publish application'
 
 on:
-    push:
-        branches: [master]
+  push:
+    branches:
+      - main
+    paths-ignore:
+      - '**/README.md'
 
 jobs:
-    deploy-to-github-pages:
-        runs-on: ubuntu-latest
-        steps:
-            - uses: actions/checkout@v2
+  build:
+    runs-on: ubuntu-latest
+    steps:
+        # Checkout the code
+        - uses: actions/checkout@v2
 
-            - name: Setup .NET Core SDK
-              uses: actions/setup-dotnet@v1
-              with:
-                  dotnet-version: 8.0.x
-                  include-prerelease: true
+        # Install .NET 8.0 SDK
+        - name: Setup .NET 8
+          uses: actions/setup-dotnet@v1
+          with:
+            dotnet-version: '8.0.x'
+            include-prerelease: true
 
-            - name: dotnet workload restore
-              run: dotnet workload restore
+        # Generate the website
+        - name: Publish
+          run: dotnet publish SiriLazor.WASM/SiriLazor.WASM.csproj --configuration Release --output build
 
-            - name: Publish .NET Core Project
-              run: dotnet publish SiriLazor.WASM/SiriLazor.WASM.csproj -c Release -o release --nologo
-
-            - name: copy index.html to 404.html
-              run: cp release/wwwroot/index.html release/wwwroot/404.html
-
-            - name: Add .nojekyll file
-              run: touch release/wwwroot/.nojekyll
-
-            - name: Commit wwwroot to GitHub Pages
-              uses: JamesIves/github-pages-deploy-action@3.7.1
-              with:
-                  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-                  BRANCH: gh-pages
-                  FOLDER: release/wwwroot
+        # Publish the website
+        - name: GitHub Pages action
+          if: ${{ github.ref == 'refs/heads/main' }} # Publish only when the push is on main
+          uses: peaceiris/actions-gh-pages@v3.6.1
+          with:
+            github_token: ${{ secrets.PUBLISH_TOKEN }}
+            publish_branch: gh-pages
+            publish_dir: build/wwwroot
+            allow_empty_commit: false
+            keep_files: false
+            force_orphan: true
