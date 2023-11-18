@@ -1,14 +1,19 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.Razor">
-  <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <TypeScriptTarget>ES6</TypeScriptTarget>
-  </PropertyGroup>
-  <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-    <TypeScriptTarget>ES6</TypeScriptTarget>
-  </PropertyGroup>
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
+    <Title>Siriwave.js interop for blazor</Title>
+    <Authors>p0laris</Authors>
+    <Description>Siriwave.js wrapper for blazor to generate siri-wave animations for both classical style, IOS9+ style.</Description>
+    <PackageProjectUrl>https://github.com/p6laris/SiriLazor</PackageProjectUrl>
+    <PackageIcon>SiriLazor_160x160.png</PackageIcon>
+    <RepositoryUrl>https://github.com/p6laris/SiriLazor</RepositoryUrl>
+    <PackageTags>Siri-wave; Siriwave.js;Blazor; Blazor Wrapper;SiriLazor;</PackageTags>
+    <NeutralLanguage>en-US</NeutralLanguage>
+    <PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
   </PropertyGroup>
   <ItemGroup>
     <Content Include="Component\Interfaces\ISiriLazor.cs" />
@@ -17,10 +22,12 @@
     <SupportedPlatform Include="browser" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Microsoft.TypeScript.MSBuild" Version="5.2.2">
-      <PrivateAssets>all</PrivateAssets>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-    </PackageReference>
     <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="8.0.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Update="SiriLazor_160x160.png">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
   </ItemGroup>
 </Project>

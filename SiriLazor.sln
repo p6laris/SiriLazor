@@ -7,11 +7,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SiriLazor", "SiriLazor\Siri
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SiriLazor.WASM", "SiriLazor.WASM\SiriLazor.WASM.csproj", "{D30D7C33-D7EB-45C8-BBD9-3C49F4E6A536}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "resources", "resources", "{99534AA8-8AC6-42B6-BE1A-A4DF893A427D}"
-	ProjectSection(SolutionItems) = preProject
-		..\..\..\OneDrive\Desktop\SiriLazor_160x160.png = ..\..\..\OneDrive\Desktop\SiriLazor_160x160.png
-	EndProjectSection
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
