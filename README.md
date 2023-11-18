@@ -52,4 +52,92 @@ After you installed SirLazor, then you can use the SiriLazor's components:
   <IOS9Wave SetDefaultOptions></IOS9Wave>
    ```
 ### Options
-Both components have several options to be set
+Both components have several options to be set to customize the wave:
+
+##### ClassicWave
+| Parameter                      | Type                                      | Description                                     | Default  |
+|-------------------------------|-------------------------------------------|-------------------------------------------------|----------|
+| `Ratio`                       | `double?`                                 | Ratio of the display to use.                     | calculated |
+| `Speed`                       | `double?`                                 | The speed of the animation.                      | 0.2|
+| `Amplitude`                   | `double?`                                 | The amplitude of the complete wave-form.         | 1.0|
+| `Frequency`                   | `double?`                                 | The frequency of the complete wave-form.         | 6.0|
+| `Color`                       | `string?`                                 | The hex color of the wave.                       | #ffffff|
+| `Cover`                       | `bool?`                                   | The canvas covers the entire width or height of the container  | false|
+| `Width`                       | `double?`                                 | Sets the width parameter.                        | 600.0 |
+| `Height`                      | `double?`                                 | Sets the height parameter.                       | 200.0 |
+| `Autostart`                   | `bool?`                                   | Decide wether start the animation on boot     | false    |
+| `PixelDepth`                  | `double?`                                 | Number of step (in pixels) used when drawed on canvas. | 0.2   |
+| `LerpSpeed`                   | `double?`                                 | Lerp speed to interpolate properties.                 | 0.01      |
+| `Definitions`                 | `IEnumerable<ClassicWaveCurveDefintion>?` | Override definition of the curves, check the [siriwave.js](https://github.com/kopiro/siriwave/).      | null    |
+| `GlobalCompositeOperation`    | `string?`                                 | GlobalCompositeOperation of the canvas, controls wave overlap design.  | "lighter"      |
+
+##### IOS9Wave
+
+| Parameter                      | Type                                      | Description                                     | Default  |
+|-------------------------------|-------------------------------------------|-------------------------------------------------|----------|
+| `Ratio`                       | `double?`                                 | Ratio of the display to use.                     | calculated |
+| `Speed`                       | `double?`                                 | The speed of the animation.                      | 0.2|
+| `Amplitude`                   | `double?`                                 | The amplitude of the complete wave-form.         | 1.0|
+| `Cover`                       | `bool?`                                   | The canvas covers the entire width or height of the container  | false|
+| `Width`                       | `double?`                                 | Sets the width parameter.                        | 600.0 |
+| `Height`                      | `double?`                                 | Sets the height parameter.                       | 200.0 |
+| `Autostart`                   | `bool?`                                   | Decide wether start the animation on boot     | false    |
+| `PixelDepth`                  | `double?`                                 | Number of step (in pixels) used when drawed on canvas. | 0.2   |
+| `LerpSpeed`                   | `double?`                                 | Lerp speed to interpolate properties.                 | 0.01      |
+| `iOS9Ranges`                  | `IOS9WaveRanges?`                         | Sets the iOS 9 wave ranges parameter, check the [siriwave.js](https://github.com/kopiro/siriwave/).            | null       |
+| `Definitions`                 | `IEnumerable<IOS9WaveCurveDefintion>?` | Override definition of the curves, check the [siriwave.js](https://github.com/kopiro/siriwave/).      | null    |
+| `GlobalCompositeOperation`    | `string?`                                 | GlobalCompositeOperation of the canvas, controls wave overlap design.  | "lighter"      |
+
+For setting the GlobalCompositeOperation, you can use `GlobalCompositeOperation` static class.
+
+##### Default Options
+You can just use `SetDefaultOptions` parameter to set the options to default:
+
+ ```razor
+  @using SiripLazor.UI;
+
+  <IOS9Wave SetDefaultOptions></IOS9Wave>
+   ```
+##### SiriObject
+By refrencing both components you can access `SiriLazor` object, the object holds the index of the component so it can access it's animation.
+
+ ```razor
+  @using SiripLazor.UI;
+
+  <ClassicWave SetDefaultOptions @ref="wave"></ClassicWave>
+
+  @code{
+    ClassicWave wave;
+
+    async Task Stop() => await wave.Stop();
+   }
+   ```
+##### Methods
+
+- **Stop:**
+  - *Description:* Stops the SiriWave animation.
+  - *Usage:* `await Stop();`
+
+- **Start:**
+  - *Description:* Starts the SiriWave animation.
+  - *Usage:* `await Start();`
+
+- **SetSpeed(animated):**
+  - *Description:* Sets the speed of the SiriWave animation to the specified value.
+  - *Usage:* `await SetSpeed(double value);`
+
+- **SetAmplitude(animated):**
+  - *Description:* Sets the amplitude of the SiriWave to the specified value.
+  - *Usage:* `await SetAmplitude(double value);`
+
+- **DisposeAsync:**
+  - *Description:* Disposes of the SiriWave, cleaning up associated resources.
+  - *Usage:* `await DisposeAsync();`
+ 
+## Example
+
+:bookmark_tabs: See the full example [here](https://github.com/p6laris/SiriLazor/blob/master/SiriLazor.WASM/Components/Pages/Home.razor).
+
+## License
+[MIT](https://github.com/p6laris/SiriLazor/blob/master/LICENSE.txt)
+
