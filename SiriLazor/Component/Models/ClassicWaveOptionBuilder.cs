@@ -110,15 +110,15 @@ namespace SiriLazor.Component.Models
 
             this.Container = Container;
             Style = "ios";
-            Ratio = 1.0;
+            Ratio = null;
             Speed = 0.2;
             Amplitude = 1.0;
             Frequency = 6.0;
             Color = "#ffffff";
-            Cover = true;
+            Cover = false;
             Width =  640.0;
             Height =  200.0;
-            Autostart =  true;
+            Autostart =  false;
             PixelDepth =  0.02;
             LerpSpeed =  0.01;
             Definitions = null;

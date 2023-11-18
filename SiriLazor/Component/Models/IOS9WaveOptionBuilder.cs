@@ -99,7 +99,7 @@ namespace SiriLazor.Component.Models
         {
             this.Container = Container;
             Style = "ios";
-            Ratio = 1.0;
+            Ratio = null;
             Speed = 0.2;
             Amplitude = 1.0;
             Cover = true;
@@ -109,6 +109,7 @@ namespace SiriLazor.Component.Models
             PixelDepth = 0.02;
             LerpSpeed = 0.01;
             Definitions = null;
+            iOS9Ranges = null;
             GlobalCompositeOperation = "lighter";
 
             return this;
