@@ -1,0 +1,36 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34205.153
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SiriLazor", "SiriLazor\SiriLazor.csproj", "{81383E6B-EA86-44D1-BC74-C083D6FD7C8F}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SiriLazor.WASM", "SiriLazor.WASM\SiriLazor.WASM.csproj", "{D30D7C33-D7EB-45C8-BBD9-3C49F4E6A536}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "resources", "resources", "{99534AA8-8AC6-42B6-BE1A-A4DF893A427D}"
+	ProjectSection(SolutionItems) = preProject
+		..\..\..\OneDrive\Desktop\SiriLazor_160x160.png = ..\..\..\OneDrive\Desktop\SiriLazor_160x160.png
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{81383E6B-EA86-44D1-BC74-C083D6FD7C8F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{81383E6B-EA86-44D1-BC74-C083D6FD7C8F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{81383E6B-EA86-44D1-BC74-C083D6FD7C8F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{81383E6B-EA86-44D1-BC74-C083D6FD7C8F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D30D7C33-D7EB-45C8-BBD9-3C49F4E6A536}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D30D7C33-D7EB-45C8-BBD9-3C49F4E6A536}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D30D7C33-D7EB-45C8-BBD9-3C49F4E6A536}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D30D7C33-D7EB-45C8-BBD9-3C49F4E6A536}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {DDD4E93C-4367-4316-B1C2-DB6F865B4977}
+	EndGlobalSection
+EndGlobal

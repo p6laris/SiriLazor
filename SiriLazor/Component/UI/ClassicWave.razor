@@ -1,0 +1,108 @@
+﻿@inject ISiriLazor siriLazor;
+@implements IAsyncDisposable;
+@namespace SiriLazor.UI
+
+<div @ref="siriContainer"></div>
+
+@code {
+
+    public ElementReference siriContainer { get; set; }
+
+
+    [Parameter]
+    public double? Ratio { get; set; }
+
+    [Parameter]
+    public double? Speed { get; set; }
+
+    [Parameter]
+    public double? Amplitude { get; set; }
+
+    [Parameter]
+    public double? Frequency { get; set; }
+
+    [Parameter]
+    public string? Color { get; set; }
+
+    [Parameter]
+    public bool? Cover { get; set; }
+
+    [Parameter]
+    public double? Width { get; set; }
+
+    [Parameter]
+    public double? Height { get; set; }
+
+    [Parameter]
+    public bool? Autostart { get; set; }
+
+    [Parameter]
+    public double? PixelDepth { get; set; }
+
+    [Parameter]
+    public double? LerpSpeed { get; set; }
+
+    [Parameter]
+    public IEnumerable<ClassicWaveCurveDefintion>? Definitions { get; set; }
+
+    [Parameter]
+    public string? GlobalCompositeOperation { get; set; }
+
+    [Parameter]
+    public bool SetDefaultOptions { get; set; }
+
+    SiriObject? SiriObject { get; set; }
+    IOptions<ClassicWaveCurveDefintion>? opt;
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            var builder = new ClassicWaveOptionBuilder();
+            if (SetDefaultOptions)
+                builder.GetDefaultOptions(siriContainer);
+            else
+            {
+                builder.SetContainer(siriContainer)
+                .SetAmplitude(Amplitude)
+                .SetRatio(Ratio)
+                .SetWidth(Width)
+                .SetColor(Color)
+                .SetFrequency(Frequency)
+                .SetHeight(Height)
+                .SetAutostart(Autostart)
+                .SetPixelDepth(PixelDepth)
+                .SetLerpSpeed(LerpSpeed)
+                .SetCover(Cover)
+                .SetDefinitions(Definitions?.ToList())
+                .SetGlobalCompositeOperation(GlobalCompositeOperation);
+            }
+
+            opt = builder.Build();
+            SiriObject = await siriLazor.InitSiriLazor(opt);
+        }
+
+    }
+
+    public async Task Stop()
+    {
+        await SiriObject!.StopAnimation();
+    }
+    public async Task Start()
+    {
+        await SiriObject!.StartAnimation();
+    }
+    public async Task SetSpeed(double value)
+    {
+        await SiriObject!.SetSpeed(value);
+    }
+    public async Task SetAmplitude(double value)
+    {
+        await SiriObject!.SetAmplitude(value);
+    }
+
+    public async ValueTask DisposeAsync()
+    {
+        await SiriObject!.DisposeAsync();
+    }
+}

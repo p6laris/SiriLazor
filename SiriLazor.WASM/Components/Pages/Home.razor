@@ -1,0 +1,104 @@
+﻿@page "/"
+@using SiriLazor.UI;
+
+<PageTitle>SiriLazorDemo</PageTitle>
+
+<div class="flex flex-col m-10">
+    <h1 class="text-white text-center font-black text-5xl">SiriLazor</h1>
+    <p class="text-white text-center mb-10">
+        The Apple® Siri wave-form.
+    </p>
+    <div class="grid grid-cols-2 gap-10 divide-x divide-solid ">
+        <div class="flex flex-col items-center">
+            <h1 class="font-inter text-white font-black text-center">Classic Wave</h1>
+            <ClassicWave SetDefaultOptions @ref="classicWave"></ClassicWave>
+            <div>
+                <button @onclick="async () => await StopClassic()" class="text-black bg-white px-3 py-1 rounded">Stop</button>
+                <button @onclick="async () => await StartClassic()" class="text-black bg-white px-3 py-1 rounded">Start</button>
+                
+            </div>
+            <div class="w-1/2 mx-auto mt-8 text-black bg-white p-2 flex rounded">
+                <label for="ios9SSpeedlider">Speed:</label>
+                <input type="range" min="0" max="3" step="0.1" value="@sliderClassicSpeedValue" @oninput="async (e) => await UpdateSpeedValueClassic(e)">
+                <p class="mt-4"><span>@sliderClassicSpeedValue</span></p>
+            </div>
+            <div class="w-1/2 mx-auto mt-8 text-black bg-white p-2 flex rounded">
+                <label for="ios9SSpeedlider">Amplitude:</label>
+                <input type="range" min="0" max="3" step="0.1" value="@sliderClassicAmpValue" @oninput="async (e) => await UpdateAmpValueClassic(e)">
+                <p class="mt-4"><span>@sliderClassicAmpValue</span></p>
+            </div>
+        </div>
+        <div class="flex flex-col items-center">
+            <h1 class="font-inter text-center font-black bg-gradient-to-r from-rose-400 to-sky-400 bg-clip-text text-transparent">IOS9 Wave</h1>
+            <IOS9Wave SetDefaultOptions @ref="ios9Wave"></IOS9Wave>
+            <div>
+                <button @onclick="async() => await StopIOS9()" class="text-black bg-white px-3 py-1 rounded">Stop</button>
+                <button @onclick="async () => await StartIOS9()" class="text-black bg-white px-3 py-1 rounded">Start</button>
+                
+
+            </div>
+                <div class="w-1/2 mx-auto mt-8 text-black bg-white p-2 flex rounded">
+                    <label for="ios9SSpeedlider">Speed:</label>
+                    <input type="range" min="0" max="3" step="0.1" value="@sliderIos9SpeedValue" @oninput="async (e) => await UpdateSpeedValueIOS9(e)">
+                    <p class="mt-4"><span>@sliderIos9SpeedValue</span></p>
+                </div>
+                <div class="w-1/2 mx-auto mt-8 text-black bg-white p-2 flex rounded">
+                    <label for="ios9SSpeedlider">Amplitude:</label>
+                    <input type="range" min="0" max="3" step="0.1" value="@sliderIos9AmpValue" @oninput="async (e) => await UpdateAmpValueIOS9(e)">
+                    <p class="mt-4"><span>@sliderIos9AmpValue</span></p>
+                </div>
+        </div>
+    </div>
+    
+    
+</div>
+
+
+@code{
+    IOS9Wave ios9Wave;
+    ClassicWave classicWave;
+
+    double sliderIos9SpeedValue = 0.2;
+    double sliderIos9AmpValue = 1;
+
+    double sliderClassicSpeedValue = 0.2;
+    double sliderClassicAmpValue = 1;
+
+    async ValueTask StopClassic()
+    {
+        await classicWave.Stop();
+    }
+    async ValueTask StopIOS9()
+    {
+        await ios9Wave.Stop();
+    }
+
+    async ValueTask StartIOS9()
+    {
+        await ios9Wave.Start();
+    }
+    async ValueTask StartClassic()
+    {
+        await classicWave.Start();
+    }
+    private async ValueTask UpdateSpeedValueIOS9(ChangeEventArgs e)
+    {
+        sliderIos9SpeedValue = Convert.ToDouble(e.Value);
+        await ios9Wave.SetSpeed(sliderIos9SpeedValue);
+    }
+    private async ValueTask UpdateAmpValueIOS9(ChangeEventArgs e)
+    {
+        sliderIos9AmpValue = Convert.ToDouble(e.Value);
+        await ios9Wave.SetAmplitude(sliderIos9AmpValue);
+    }
+    private async ValueTask UpdateSpeedValueClassic(ChangeEventArgs e)
+    {
+        sliderClassicSpeedValue = Convert.ToDouble(e.Value);
+        await classicWave.SetSpeed(sliderClassicSpeedValue);
+    }
+    private async ValueTask UpdateAmpValueClassic(ChangeEventArgs e)
+    {
+        sliderClassicAmpValue = Convert.ToDouble(e.Value);
+        await classicWave.SetAmplitude(sliderClassicAmpValue);
+    }
+}
