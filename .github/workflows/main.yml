@@ -23,7 +23,7 @@ jobs:
 
         # Generate the website
         - name: Publish
-          run: dotnet publish SiriLazor.WASM/SiriLazor.WASM.csproj --configuration Release --output build
+          run: dotnet publish ./SiriLazor.WASM/SiriLazor.WASM.csproj --configuration Release --output build
 
         # Publish the website
         - name: GitHub Pages action
