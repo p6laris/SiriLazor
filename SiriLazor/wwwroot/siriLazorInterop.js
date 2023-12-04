@@ -71,13 +71,13 @@ window.siriWave = {
 
     setSpeed: function (newValue, instance) {
         if (window.sw[instance] !== null) {
-            window.sw[instance].setSpeed(newValue);
+            window.sw[instance].speed = newValue
         }
     },
 
     setAmplitude: function (value, instance) {
         if (window.sw[instance] !== null) {
-            window.sw[instance].setAmplitude(value);
+            window.sw[instance].amplitude = value;
         }
     },
 
