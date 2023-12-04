@@ -99,7 +99,7 @@ You can just use `SetDefaultOptions` parameter to set the options to default:
   <IOS9Wave SetDefaultOptions></IOS9Wave>
    ```
 ##### SiriObject
-By refrencing both components you can access `SiriLazor` object, the object holds the index of the component so it can access it's animation.
+By refrencing both components you can access `SiriLazor` object''s methods,basically the object holds the index of the Siriwave's instance so it can access it's animation.
 
  ```razor
   @using SiripLazor.UI;
