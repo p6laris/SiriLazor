@@ -12,7 +12,7 @@ namespace SiriLazor
         /// <summary>
         /// Gets the instance identifier for the SiriObject.
         /// </summary>
-        public int Instance { get; private set; }
+        public int Instance { get; internal set; }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="SiriObject"/> class.
