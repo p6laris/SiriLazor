@@ -3,6 +3,9 @@
 
 namespace SiriLazor.Component.Models
 {
+    /// <summary>
+    /// Represents the definition of a classic wave curve for graphics rendering.
+    /// </summary>
     public class ClassicWaveCurveDefintion : ICurveDefintion
     {
         public string Color { get; set; }

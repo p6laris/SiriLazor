@@ -1,6 +1,15 @@
-﻿window.sw = [];
-
+﻿/**
+ * SiriWave namespace for managing SiriWave instances.
+ * @namespace
+ */
 window.siriWave = {
+
+    /**
+     * Initializes a SiriWave instance with iOS style.
+     * @function
+     * @param {Object} options - Options for configuring the SiriWave instance.
+     * @returns {number} - The index of the created SiriWave instance in the global array.
+     */
     initIOS: function (options) {
         let instance = new SiriWave({
             container: options.container,
@@ -16,8 +25,6 @@ window.siriWave = {
             autostart: options.autostart || true,
             pixelDepth: options.pixelDepth || 0.02,
             lerpSpeed: options.lerpSpeed || 0.01
-
-
         });
 
         window.sw.push(instance);
@@ -26,8 +33,14 @@ window.siriWave = {
         const instanceIndex = window.sw.indexOf(instance);
 
         return instanceIndex;
-       
     },
+
+    /**
+     * Initializes a SiriWave instance with iOS 9 style.
+     * @function
+     * @param {Object} options - Options for configuring the SiriWave instance.
+     * @returns {number} - The index of the created SiriWave instance in the global array.
+     */
     initIOS9: function (options) {
         let instance = new SiriWave({
             container: options.container,
@@ -44,7 +57,6 @@ window.siriWave = {
             ranges: options.iOS9Ranges,
             globalCompositeOperation: options.globalCompositeOperation || 'lighter',
             curveDefinition: options.definitions
-
         });
 
         window.sw.push(instance);
@@ -53,34 +65,59 @@ window.siriWave = {
         const instanceIndex = window.sw.indexOf(instance);
 
         return instanceIndex;
-        
-
     },
 
+    /**
+     * Starts the SiriWave animation for the specified instance.
+     * @function
+     * @param {number} instance - The index of the SiriWave instance to start.
+     */
     start: function (instance) {
         if (window.sw[instance] !== null) {
             window.sw[instance].start();
         }
     },
 
+    /**
+     * Stops the SiriWave animation for the specified instance.
+     * @function
+     * @param {number} instance - The index of the SiriWave instance to stop.
+     */
     stop: function (instance) {
         if (window.sw[instance] != null) {
             window.sw[instance].stop();
         }
     },
 
+    /**
+     * Sets the speed of the SiriWave animation for the specified instance.
+     * @function
+     * @param {number} newValue - The new speed value.
+     * @param {number} instance - The index of the SiriWave instance to update.
+     */
     setSpeed: function (newValue, instance) {
         if (window.sw[instance] !== null) {
-            window.sw[instance].speed = newValue
+            window.sw[instance].speed = newValue;
         }
     },
 
+    /**
+     * Sets the amplitude of the SiriWave animation for the specified instance.
+     * @function
+     * @param {number} value - The new amplitude value.
+     * @param {number} instance - The index of the SiriWave instance to update.
+     */
     setAmplitude: function (value, instance) {
         if (window.sw[instance] !== null) {
             window.sw[instance].amplitude = value;
         }
     },
 
+    /**
+     * Disposes the SiriWave instance, freeing associated resources.
+     * @function
+     * @param {number} instance - The index of the SiriWave instance to dispose.
+     */
     dispose: function (instance) {
         if (window.sw[instance] !== null) {
             window.sw[instance].dispose();
@@ -88,6 +125,10 @@ window.siriWave = {
         }
     },
 
+    /**
+     * Disposes all SiriWave instances, freeing associated resources.
+     * @function
+     */
     disposeAll: function () {
         if (window.sw !== null) {
             for (var i = 0; i < sw.length; i++) {

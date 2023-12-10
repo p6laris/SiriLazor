@@ -1,5 +1,8 @@
 ﻿namespace SiriLazor.Component.Models
 {
+    /// <summary>
+    /// Provides constants representing global composite operation types for graphics rendering.
+    /// </summary>
     public static class GlobalCompositeOperation
     {
         public static readonly string Color = "color";

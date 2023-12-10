@@ -83,23 +83,41 @@
 
     }
 
+    /// <summary>
+    /// Stops the SiriWave animation.
+    /// </summary>
     public async Task Stop()
     {
         await SiriObject!.StopAnimation();
     }
+
+    /// <summary>
+    /// Starts the SiriWave animation.
+    /// </summary>
     public async Task Start()
     {
         await SiriObject!.StartAnimation();
     }
+
+    /// <summary>
+    /// Sets the speed of the SiriWave animation.
+    /// </summary>
+    /// <param name="value">The new speed value.</param>
     public async Task SetSpeed(double value)
     {
         await SiriObject!.SetSpeed(value);
     }
+
+    /// <summary>
+    /// Sets the amplitude of the SiriWave animation.
+    /// </summary>
+    /// <param name="value">The new amplitude value.</param>
     public async Task SetAmplitude(double value)
     {
         await SiriObject!.SetAmplitude(value);
     }
 
+    /// <inheritdoc/>
     public async ValueTask DisposeAsync()
     {
         await SiriObject!.DisposeAsync();
