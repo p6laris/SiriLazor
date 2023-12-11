@@ -1,4 +1,6 @@
-﻿/**
+﻿window.sw = [];
+
+/**
  * SiriWave namespace for managing SiriWave instances.
  * @namespace
  */
