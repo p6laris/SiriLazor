@@ -11,7 +11,7 @@
     <RepositoryUrl>https://github.com/p6laris/SiriLazor</RepositoryUrl>
     <PackageTags>Siri-wave; Siriwave.js;Blazor; Blazor Wrapper;SiriLazor;</PackageTags>
     <NeutralLanguage>en-US</NeutralLanguage>
-	<PackageVersion>1.0.2</PackageVersion>
+	<PackageVersion>1.0.3</PackageVersion>
     <PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>

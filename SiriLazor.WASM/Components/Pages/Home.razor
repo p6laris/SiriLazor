@@ -99,6 +99,7 @@
     private async ValueTask UpdateAmpValueClassic(ChangeEventArgs e)
     {
         sliderClassicAmpValue = Convert.ToDouble(e.Value);
-        await classicWave.SetAmplitude(sliderClassicAmpValue);
+
+        await classicWave.SetFrequency(sliderClassicAmpValue);
     }
 }
