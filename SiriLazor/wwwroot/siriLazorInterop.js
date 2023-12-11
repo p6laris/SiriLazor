@@ -1,9 +1,9 @@
-﻿window.sw = [];
-
-/**
+﻿/**
  * SiriWave namespace for managing SiriWave instances.
  * @namespace
  */
+window.sw = [];
+
 window.siriWave = {
 
     /**
